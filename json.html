@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Page</title>
+    <style>
+        body {
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: green;
+            font-size: 1em;
+        }
+        pre {
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+    </style>
+</head>
+<body>
+    <pre id="json-content"></pre>
+
+    <script>
+        // get the target URL from session storage
+        var apiUrl = sessionStorage.getItem('apiUrl');
+        // make an HTTP request to the target URL
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // display the JSON data
+                document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
