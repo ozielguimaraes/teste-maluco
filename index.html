@@ -2,6 +2,18 @@
 <html>
 <head>
     <title>Page 1</title>
+    <style>
+        label{
+            font-size: xx-large;
+        }
+        .actions{
+            width: 100%;
+        }
+        .actions button{
+            background-color: aquamarine;
+            height: 45px;
+        }
+    </style>
     <script>
         function redirectToJSON() {
             // save the target URL to session storage
@@ -9,12 +21,19 @@
             // redirect to the JSON page
             window.location.href = 'json.html';
         }
+        function redirectToGlicOnline() {
+            setTimeout(function() {
+                window.location.href = 'https://app.gliconline.com.br/xxxx/libreview/oauth/callback';
+            }, 1000);
+        }
     </script>
 </head>
-<body>
+<body onload="redirectToGlicOnline()">
     <label>Click the button to authorize</label>
-    <button onclick="window.location.href='authorized.html'">Authorize</button>
+    <div class="actions">
+        <button onclick="window.location.href='authorized.html'">Authorize</button>
 
-    <button onclick="redirectToJSON()">Get JSON</button>
+        <button onclick="redirectToJSON()">Get JSON</button>
+    </div>
 </body>
 </html>
